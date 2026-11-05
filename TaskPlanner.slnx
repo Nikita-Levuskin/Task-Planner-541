@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/TaskPlanner/TaskPlanner.csproj" />
+  <Project Path="tests/TaskPlanner.Tests/TaskPlanner.Tests.csproj" />
+</Solution>

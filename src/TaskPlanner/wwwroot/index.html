@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Планировщик задач</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<header><div><p class="eyebrow">Левушкин Никита · группа 541</p><h1>Планировщик задач</h1></div>
+<div id="account" hidden><span id="email"></span><button id="logout" class="secondary">Выйти</button></div></header>
+<main>
+<section id="auth" class="card auth"><h2 id="auth-title">Вход</h2><p>Задачи и напоминания хранятся в вашем аккаунте.</p>
+<form id="auth-form"><label>Email<input id="auth-email" type="email" autocomplete="username" required maxlength="254"></label>
+<label>Пароль<input id="auth-password" type="password" autocomplete="current-password" required minlength="10" maxlength="128"></label>
+<p id="auth-error" class="error" role="alert"></p><button id="auth-submit">Войти</button>
+<button id="auth-toggle" type="button" class="secondary">Создать аккаунт</button></form></section>
+<section id="workspace" hidden>
+<div class="toolbar"><input id="search" type="search" placeholder="Поиск по названию" aria-label="Поиск по названию">
+<select id="state" aria-label="Состояние"><option value="active">Активные</option><option value="completed">Выполненные</option><option value="all">Все задачи</option></select>
+<select id="sort" aria-label="Сортировка"><option value="due">По сроку</option><option value="created">По времени создания</option></select>
+<button id="new-task">Новая задача</button></div>
+<p id="status" role="status" aria-live="polite"></p>
+<div class="layout"><section aria-label="Список задач"><p id="summary"></p><div id="tasks"></div></section>
+<aside class="card"><h2>Напоминания</h2><p>За 30 минут до срока. Если приложение было закрыто, напоминание появится после запуска сервера.</p>
+<button id="enable-notifications" class="secondary">Уведомления браузера</button><div id="notifications"></div></aside></div>
+</section></main>
+<dialog id="editor"><form id="task-form"><h2 id="editor-title">Новая задача</h2>
+<label>Название<input id="title" required maxlength="200"></label>
+<label>Описание<textarea id="description" rows="4" maxlength="4000"></textarea></label>
+<label>Срок<input id="due" type="datetime-local" required></label>
+<p id="task-error" class="error" role="alert"></p><div class="actions"><button>Сохранить</button><button id="cancel-edit" type="button" class="secondary">Отмена</button></div>
+</form></dialog>
+<dialog id="sharing"><form id="share-form"><h2>Доступ к задаче</h2><p>Получатель должен быть зарегистрирован.</p>
+<label>Email<input id="share-email" type="email" required></label>
+<label class="check"><input id="share-edit" type="checkbox">Разрешить редактирование и завершение</label>
+<p id="share-error" class="error" role="alert"></p><div class="actions"><button>Предоставить доступ</button><button id="close-share" type="button" class="secondary">Закрыть</button></div></form>
+<div id="shares"></div></dialog>
+<footer>Учебный проект · ASP.NET Core · SQLite</footer>
+</body></html>

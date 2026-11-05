@@ -1,0 +1,33 @@
+name: Build, test and package
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '10.0.x'
+      - run: dotnet build TaskPlanner.slnx -c Release
+      - run: dotnet run --project tests/TaskPlanner.Tests -c Release --no-build
+      - run: python3 tests/api_test.py
+  windows-package:
+    needs: verify
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: '10.0.x'
+      - run: dotnet publish src/TaskPlanner -c Release -r win-x64 --self-contained true -o artifacts/TaskPlanner-Windows
+      - shell: pwsh
+        run: |
+          Copy-Item scripts/Запустить.cmd artifacts/TaskPlanner-Windows/
+          Copy-Item README.md artifacts/TaskPlanner-Windows/
+      - uses: actions/upload-artifact@v7
+        with:
+          name: TaskPlanner-Windows-x64
+          path: artifacts/TaskPlanner-Windows/
+          if-no-files-found: error
