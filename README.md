@@ -78,4 +78,5 @@ HTTP-тесты сами запускают сервер на свободном
 - [EF Core SQLite](https://learn.microsoft.com/ef/core/providers/sqlite/)
 - [JWT bearer](https://learn.microsoft.com/aspnet/core/security/authentication/configure-jwt-bearer-authentication)
 
-Файл отчёта находится в `docs` готового комплекта для сдачи.
+[PDF-отчёт](docs/Левушкин_Никита_541_Планировщик_задач.pdf), снимок интерфейса и
+подтверждение проверки GitHub Actions находятся в `docs`.

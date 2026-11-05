@@ -1,0 +1,18 @@
+{
+  "repository": "Task-Planner-541",
+  "run_id": 42056882729,
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "verify",
+      "conclusion": "success"
+    },
+    {
+      "name": "windows-package",
+      "conclusion": "success"
+    }
+  ],
+  "artifact_id": 13430296968,
+  "sha256": "2db3fd8cb01cac077e98ab54bd87f76d71aa2a8204262959e5265b8c7ae807ec",
+  "run_url": "https://github.com/Nikita-Levuskin/Task-Planner-541/actions/runs/42056882729"
+}
